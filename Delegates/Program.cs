@@ -12,11 +12,13 @@ namespace Delegates
             Product cola = new Product("CocaCola", 1.7, 40);
             Product water = new Product("Milk", 0.3, 10);
 
-            List<Product> products = new List<Product>(4);
-            products.Add(milk);
-            products.Add(bread);
-            products.Add(cola);
-            products.Add(water);
+            List<Product> products = new List<Product>(4)
+            {
+                milk,
+                bread,
+                cola,
+                water
+            };
 
             Order order = new Order(products);
         }

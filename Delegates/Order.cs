@@ -20,22 +20,21 @@ namespace Delegates
             {
                 TotalPrice += product.GetPrice();
             }
-            Sell(Date);
-        }
-
-        public void Sell(DateTime date)
-        {
-            double discount = 0;
-            if (TotalPrice > 100 && TotalPrice < 200)
+            Action<DateTime> sell = delegate (DateTime date)
             {
-                discount = 10;
-            }
-            else if (TotalPrice > 200)
-            {
-                discount = 20;
-            }
-            TotalPrice *= (1 -  discount/100);
-            Console.WriteLine($"Date: {date}\n{TotalPrice} azn\nDiscount: {discount}%");
+                double discount = 0;
+                if (TotalPrice > 100 && TotalPrice < 200)
+                {
+                    discount = 10;
+                }
+                else if (TotalPrice > 200)
+                {
+                    discount = 20;
+                }
+                TotalPrice *= (1 - discount / 100);
+                Console.WriteLine($"Date: {date}\nDiscount: {discount}%\nTotal: {TotalPrice} azn");
+            };
+            sell(Date);
         }
     }
 }
